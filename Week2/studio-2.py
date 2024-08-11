@@ -71,7 +71,7 @@ data = pd.read_csv('normalised_data.csv')
 
 # Create new composite features by multiplying pairs of normalized values
 data['AT_V'] = data['AT'] * data['V']
-data['AP_RH'] = data['AP'] * data['RH']
+data['AT_RH'] = data['AT'] * data['RH']
 
 # Save the dataset with the new composite features
 data.to_csv('features_data.csv', index=False)
@@ -84,7 +84,7 @@ print()
 data = pd.read_csv('features_data.csv')
 
 # Select the relevant features for further analysis
-selected_features = ['AT', 'V', 'AP', 'AT_V', 'AP_RH', 'PE_Label']
+selected_features = ['AT', 'V', 'AP', 'AT_V', 'AT_RH', 'PE_Label']
 selected_data = data[selected_features]
 
 # Save the selected features to a new CSV file
@@ -102,10 +102,10 @@ selected_features = ['AT', 'V', 'AP', 'PE_Label']
 
 # Create composite features based on the original data
 data['AT_V'] = data['AT'] * data['V']
-data['AP_RH'] = data['AP'] * data['RH']
+data['AT_RH'] = data['AT'] * data['RH']
 
 # Combine the original features with the new composite features
-composite_features = ['AT_V', 'AP_RH']
+composite_features = ['AT_V', 'AT_RH']
 final_selected_features = selected_features[:-1] + composite_features + ['PE_Label']
 selected_data = data[final_selected_features]
 
@@ -164,7 +164,7 @@ print()
 data = pd.read_csv('features_data.csv')
 
 # Define features and target for the third model
-X = data[['AT', 'V', 'AP', 'RH', 'AT_V', 'AP_RH']]
+X = data[['AT', 'V', 'AP', 'RH', 'AT_V', 'AT_RH']]
 y = data['PE_Label']
 
 # Split the dataset into training and testing sets
@@ -186,7 +186,7 @@ print()
 data = pd.read_csv('selected_features_data.csv')
 
 # Define features and target for the fourth model
-X = data[['AT', 'V', 'AP', 'AT_V', 'AP_RH']]
+X = data[['AT', 'V', 'AP', 'AT_V', 'AT_RH']]
 y = data['PE_Label']
 
 # Split the dataset into training and testing sets
