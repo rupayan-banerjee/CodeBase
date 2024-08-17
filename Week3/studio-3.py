@@ -69,7 +69,7 @@ param_grid = {
 }
 
 # Initialize GridSearchCV
-grid = GridSearchCV(svm.SVC(), param_grid, refit=True, verbose=3)
+grid = GridSearchCV(svm.SVC(), param_grid, refit=True, verbose=3, cv=10)
 
 # Fit GridSearchCV to the data
 grid.fit(X_train, y_train)
